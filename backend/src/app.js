@@ -7,6 +7,10 @@ import morgan from "morgan";
 //controls who can talk with the application
 import cors from "cors";
 import healthCheckRouter from "./routes/healthCheck.route.js"
+import loginRouter from "./routes/login.route.js"
+import logoutRouter from "./routes/logout.route.js"
+import signUpRouter from "./routes/signup.route.js"
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -34,8 +38,12 @@ app.use(
     credentials: false,
   })
 );
-
+app.use(cookieParser());
+app.use(express.json({limit:"16kb"}));
 //routes
 app.use("/api/v1/healthCheck", healthCheckRouter);
+app.use("/api/v1/login", loginRouter);
+app.use("/api/v1/logout", logoutRouter);
+app.use("/api/v1/signup", signUpRouter);
 
 export { app };

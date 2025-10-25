@@ -1,4 +1,4 @@
-const DB_NAME = "CodeAnalyser"
+const DB_NAME = "CodeAnalyser";
 
 export {
   DB_NAME
